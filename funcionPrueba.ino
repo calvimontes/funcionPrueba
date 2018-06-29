@@ -14,11 +14,8 @@ char inbyte = 0; //Char para leer el led
 void setup() {
   // initialise serial communications at 9600 bps:
   Serial.begin(9600);
-  pinMode(led, OUTPUT);
-  digitalWrite(led, LOW);
   //dht.begin();
   BT.begin(9600);
-  pinMode(buzzer, OUTPUT); //buzzer como salida de audio
 }
  
 void loop() { 
@@ -70,6 +67,7 @@ void getProximidad(){
 
 void getBuzzer(){
   const int buzzer = 8; //pin de activacion del buzzer
+  pinMode(buzzer, OUTPUT); //buzzer como salida de audio
   if (inbyte == '1'){
   digitalWrite(buzzer, LOW); //buzzer off
   }
@@ -105,6 +103,8 @@ void getDHT11(){
 
 void getLed(){
     int led = 6; //led Rojo de prueba de conexión
+    pinMode(led, OUTPUT);
+    digitalWrite(led, LOW);
     if (inbyte == '3'){
       digitalWrite(led, HIGH); //LED on
     }
