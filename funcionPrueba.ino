@@ -9,8 +9,6 @@ SoftwareSerial BT(10,11); //5 RX, 6 TX.*/
 #define PIN_TRIG 12
 #define PIN_ECO  13 
 #include <DHT11.h>
-const int buzzer = 8; //pin de activacion del buzzer
-int led = 6; //led Rojo de prueba de conexión
 char inbyte = 0; //Char para leer el led
  
 void setup() {
@@ -71,6 +69,7 @@ void getProximidad(){
 }
 
 void getBuzzer(){
+  const int buzzer = 8; //pin de activacion del buzzer
   if (inbyte == '1'){
   digitalWrite(buzzer, LOW); //buzzer off
   }
@@ -105,6 +104,7 @@ void getDHT11(){
 }
 
 void getLed(){
+    int led = 6; //led Rojo de prueba de conexión
     if (inbyte == '3'){
       digitalWrite(led, HIGH); //LED on
     }
